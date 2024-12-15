@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Mart Sales Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #667292, #a2b9bc);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-header {
+        background-color: #4d79ff;
+        border-radius: 15px 15px 0 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .form-control {
+        border-radius: 10px;
+      }
+
+      .btn-primary {
+        background-color: #4d79ff;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #1a53ff;
+      }
+
+      .btn-danger {
+        background-color: #ff4d4d;
+        border: none;
+      }
+
+      .btn-danger:hover {
+        background-color: #ff1a1a;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 1rem;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-header">Big Mart Sales Prediction</div>
+        <div class="card-body">
+          <form action="/predict" method="post">
+            <div class="form-group">
+              <label for="item_weight">Enter Item Weight</label>
+              <input
+                type="text"
+                name="item_weight"
+                id="item_weight"
+                class="form-control"
+                placeholder="E.g., 5.67"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="item_fat_content">Item Fat Content</label>
+              <select
+                class="form-control"
+                name="item_fat_content"
+                id="item_fat_content"
+                required
+              >
+                <option value="" selected>Choose...</option>
+                <option value="1">Low Fat</option>
+                <option value="2">Regular</option>
+                <option value="0">High Fat</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="item_visibility">Enter Item Visibility</label>
+              <input
+                type="text"
+                name="item_visibility"
+                id="item_visibility"
+                class="form-control"
+                placeholder="E.g., 0.1234"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="item_type">Item Type</label>
+              <select class="form-control" name="item_type" id="item_type" required>
+                <option value="" selected>Choose...</option>
+                <option value="0">Baking Goods</option>
+                <option value="1">Breads</option>
+                <option value="2">Breakfast</option>
+                <option value="3">Canned</option>
+                <option value="4">Dairy</option>
+                <option value="5">Frozen Foods</option>
+                <option value="6">Fruits and Vegetables</option>
+                <option value="7">Hard Drinks</option>
+                <option value="8">Health and Hygiene</option>
+                <option value="9">Household</option>
+                <option value="10">Meat</option>
+                <option value="11">Others</option>
+                <option value="12">Seafood</option>
+                <option value="13">Snack Foods</option>
+                <option value="14">Soft Drinks</option>
+                <option value="15">Starchy Foods</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="item_mrp">Enter Item MRP</label>
+              <input
+                type="text"
+                name="item_mrp"
+                id="item_mrp"
+                class="form-control"
+                placeholder="E.g., 250.50"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="outlet_establishment_year">
+                Outlet Establishment Year (YYYY)
+              </label>
+              <input
+                type="text"
+                name="outlet_establishment_year"
+                id="outlet_establishment_year"
+                class="form-control"
+                placeholder="E.g., 2000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="outlet_size">Outlet Size</label>
+              <select class="form-control" name="outlet_size" id="outlet_size" required>
+                <option value="" selected>Choose...</option>
+                <option value="0">High</option>
+                <option value="1">Medium</option>
+                <option value="2">Small</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="outlet_location_type">Outlet Location Type</label>
+              <select
+                class="form-control"
+                name="outlet_location_type"
+                id="outlet_location_type"
+                required
+              >
+                <option value="" selected>Choose...</option>
+                <option value="0">Tier 1</option>
+                <option value="1">Tier 2</option>
+                <option value="2">Tier 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="outlet_type">Outlet Type</label>
+              <select class="form-control" name="outlet_type" id="outlet_type" required>
+                <option value="" selected>Choose...</option>
+                <option value="0">Grocery Store</option>
+                <option value="1">Supermarket Type1</option>
+                <option value="2">Supermarket Type2</option>
+                <option value="3">Supermarket Type3</option>
+              </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-danger">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer>Big Mart Prediction &copy; 2024</footer>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5hb7Vez9pgT1C3qc3E7Kl9XnBq+uL+QuHg27sv"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pzjw8f+ua7Kw1TIqB6Df31FVpO8jG8d6b5iXzV1yDibUJj0YF+fj6SnHUMdknpa9"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
